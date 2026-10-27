@@ -124,10 +124,10 @@ function drawPig(){
  const PI=sv.chr==='scoot'?pigImg2:pigImg;const h0=54,w0=PI.naturalWidth?h0*PI.naturalWidth/PI.naturalHeight:h0;
  const sd=sliding&&pig.y===0;
  ctx.save();ctx.translate(PX,gy-pig.y-(pig.y===0&&st==='play'&&!sd?Math.abs(Math.sin(dist*.05))*5:0));
- ctx.rotate(sd?0:cl(-pig.vy/1400,-.4,.4));if(sd)ctx.scale(1.25,.5);
+ ctx.rotate(sd?0:cl(-pig.vy/1400,-.4,.4));if(sd)ctx.scale(1.25,.5);const gd=sv.chr==='scoot'?-1:1;if(gd<0)ctx.scale(-1,1);
  if(inv>0&&Math.floor(tm*12)%2)ctx.globalAlpha=.35;
  const im=PI.complete&&PI.naturalWidth;const SK=sv.chr==='scoot'?null:SKINS.find(k=>k[0]===sv.skin);const src=(im&&SK&&SK[4])?tint(SK[4]):PI;
- if(dash>0&&im){ctx.globalAlpha=.25;ctx.drawImage(src,-w0/2-40,-h0+2,w0,h0);ctx.globalAlpha=.4;ctx.drawImage(src,-w0/2-20,-h0+2,w0,h0);ctx.globalAlpha=1}
+ if(dash>0&&im){ctx.globalAlpha=.25;ctx.drawImage(src,-w0/2-40*gd,-h0+2,w0,h0);ctx.globalAlpha=.4;ctx.drawImage(src,-w0/2-20*gd,-h0+2,w0,h0);ctx.globalAlpha=1}
  if(im)ctx.drawImage(src,-w0/2,-h0+2,w0,h0);else{ctx.font='46px serif';ctx.fillText('🐷',0,2)}
  if(SK&&SK[5]){const a=SK[5];ctx.font=a.s+'px serif';ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(a.e,a.x,a.y)}
  ctx.restore();
